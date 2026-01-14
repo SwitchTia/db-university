@@ -30,6 +30,10 @@
     AND date = "2020-06-20";
 
 6. Selezionare tutti i corsi di laurea magistrale (38)
+    
+    SELECT * FROM courses
+    WHERE degree_id?
+    AND level = "magistrale"; // needs correction
 
 
 7. Da quanti dipartimenti è composta l'università? (12)
