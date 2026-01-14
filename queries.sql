@@ -2,6 +2,10 @@
 //Queries with SELECT
 
 1. Selezionare tutti gli studenti nati nel 1990 (160)
+    
+    SELECT *
+    FROM students
+    WHERE YEAR(date_of_birth) = 1990;
 
 2. Selezionare tutti i corsi che valgono più di 10 crediti (479)
 
@@ -15,7 +19,8 @@
 
 5. Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio (dopo le 14) del 20/06/2020 (21)
 
-    SELECT * FROM exams
+    SELECT * 
+    FROM exams
     WHERE hour > "14:00:00"
     AND date = "2020-06-20";
 
