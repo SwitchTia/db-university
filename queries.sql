@@ -42,10 +42,9 @@
 
 6. Selezionare tutti i corsi di laurea magistrale (38)
     
-    SELECT name 
-    FROM courses
-    WHERE degree_id?
-    AND level = "magistrale"; // needs correction
+    SELECT COUNT(*)
+    FROM degrees
+    WHERE level = "magistrale";
 
 
 7. Da quanti dipartimenti è composta l'università? (12)
