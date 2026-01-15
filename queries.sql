@@ -10,12 +10,16 @@
 
 2. Selezionare tutti i corsi che valgono più di 10 crediti (479)
 
-    SELECT name, cfu
+    SELECT *
     FROM courses    
-    WHERE cfu > "10";
+    WHERE cfu > "10"
+    ORDER BY cfu;
 
 
 3. Selezionare tutti gli studenti che hanno più di 30 anni
+
+    SELECT *, TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE() AS age
+    FROM students
 
 
 
