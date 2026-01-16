@@ -137,11 +137,23 @@ relativo dipartimento, in ordine alfabetico per cognome e nome
 
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
 
- 
+    SELECT DISTINCT teachers.*, departments.* //with distinct we eliminate the repetishions
+    FROM teachers
+    INNER JOIN course_teacher
+    ON teachers.id = course_teacher.teacher_id
+    INNER JOIN courses
+    ON course_teacher.course.id = courses.id
+    INNER JOIN degrees
+    ON courses.degree_id = degrees.id
+    INNER JOIN departments
+    ON degrees.department_id = department.id
+    WHERE department.name = "Dipartimento di Matematica"
 
 
 7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
 superare ciascuno dei suoi esami
+
+   
 
 8. Selezionare tutti gli appelli d'esame del Corso di Laurea Magistrale in Fisica del primo anno
     
