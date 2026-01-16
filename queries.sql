@@ -153,6 +153,15 @@ relativo dipartimento, in ordine alfabetico per cognome e nome
 7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
 superare ciascuno dei suoi esami
 
+    SELECT students.id, students.name, students.surname, COUNT(exam_student.vote) MAX(exam_student.vote), exams.date
+    FROM students
+    INNER JOIN exam_student
+    ON student.id = exam_student.student_id
+    INNER JOIN exam_student
+    ON exam_student.exam_id = exams.id
+    GROUP BY students.id, courses.id
+    ORDER BY students.id
+
    
 
 8. Selezionare tutti gli appelli d'esame del Corso di Laurea Magistrale in Fisica del primo anno
