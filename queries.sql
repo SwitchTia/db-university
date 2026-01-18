@@ -75,7 +75,6 @@
   
     SELECT office_address, COUNT(id)
     FROM teachers
-    WHERE phone IS NULL
     GROUP BY office_address;
 
 3. Calcolare la media dei voti di ogni appello d'esame
@@ -86,7 +85,7 @@
 
 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
 
-    SELECT department_id, COUNT(*)
+    SELECT department_id, COUNT(*) AS degree_courses
     FROM degrees
     GROUP BY department_id
 
@@ -114,14 +113,15 @@
 
 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
     
-    SELECT courses, id, name, teachers.id
+    SELECT  courses.id, courses.name
     FROM teachers
     INNER JOIN course_teacher
     ON teachers.id = course_teacher.teacher_id
     INNER JOIN courses
-    ON course_teacher.course.id = courses.id
+    ON course_teacher.course_id = courses.id
     WHERE teachers.id = 44
 
+    
 4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il
 relativo dipartimento, in ordine alfabetico per cognome e nome
     SELECT *
