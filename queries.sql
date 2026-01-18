@@ -32,7 +32,7 @@
     AND year = "1";
 
 
-5. Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio (dopo le 14) del 20/06/2020 (21)
+5. Selezionare tutti gli appelli d esame che avvengono nel pomeriggio (dopo le 14) del 20/06/2020 (21)
 
     SELECT * 
     FROM exams
@@ -47,7 +47,7 @@
     WHERE level = "magistrale";
 
 
-7. Da quanti dipartimenti è composta l'università? (12)
+7. Da quanti dipartimenti è composta l università? (12)
 
     SELECT COUNT(*)
     FROM departments
@@ -71,13 +71,13 @@
     FROM students
     GROUP BY YEAR(enrolment_date)
 
-2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+2. Contare gli insegnanti che hanno l ufficio nello stesso edificio
   
     SELECT office_address, COUNT(id)
     FROM teachers
     GROUP BY office_address;
 
-3. Calcolare la media dei voti di ogni appello d'esame
+3. Calcolare la media dei voti di ogni appello d esame
 
     SELECT exam_id, AVG(vote)
     FROM exam_student
@@ -147,34 +147,24 @@ relativo dipartimento, in ordine alfabetico per cognome e nome
 
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
 
-    SELECT DISTINCT teachers.*, departments.* //with distinct we eliminate the repetishions
+    SELECT DISTINCT teachers.*, departments.* 
     FROM teachers
     INNER JOIN course_teacher
     ON teachers.id = course_teacher.teacher_id
     INNER JOIN courses
-    ON course_teacher.course.id = courses.id
+    ON course_teacher.course_id = courses.id
     INNER JOIN degrees
     ON courses.degree_id = degrees.id
     INNER JOIN departments
-    ON degrees.department_id = department.id
-    WHERE department.name = "Dipartimento di Matematica"
+    ON degrees.department_id = departments.id
+    WHERE departments.name = "Dipartimento di Matematica"
 
 
-7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
+7. BONUS: Selezionare per ogni studente quanti tentativi d esame ha sostenuto per
 superare ciascuno dei suoi esami
 
-    SELECT students.id, students.name, students.surname, COUNT(exam_student.vote) MAX(exam_student.vote), exams.date
-    FROM students
-    INNER JOIN exam_student
-    ON student.id = exam_student.student_id
-    INNER JOIN exam_student
-    ON exam_student.exam_id = exams.id
-    GROUP BY students.id, courses.id
-    ORDER BY students.id
 
-   
-
-8. Selezionare tutti gli appelli d'esame del Corso di Laurea Magistrale in Fisica del primo anno
+8. Selezionare tutti gli appelli d esame del Corso di Laurea Magistrale in Fisica del primo anno
     
     SELECT *
     FROM exams
